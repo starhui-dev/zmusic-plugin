@@ -5,14 +5,14 @@ plugins {
 
 allprojects {
     repositories {
-        maven { url 'https://jitpack.io' }
-        maven { url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots' }
-        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
-        maven { url 'https://repo.papermc.io/repository/maven-public' }
-        maven { url 'https://repo.tabooproject.org/repository/releases' }
-        maven { url 'https://repo.extendedclip.com/content/repositories/placeholderapi' }
-        maven { url 'https://libraries.minecraft.net' }
-        maven { url 'https://repo.velocitypowered.com/snapshots/' }
+        maven { url = 'https://jitpack.io' }
+        maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots' }
+        maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+        maven { url = 'https://repo.papermc.io/repository/maven-public' }
+        maven { url = 'https://repo.tabooproject.org/repository/releases' }
+        maven { url = 'https://repo.extendedclip.com/content/repositories/placeholderapi' }
+        maven { url = 'https://libraries.minecraft.net' }
+        maven { url = 'https://repo.velocitypowered.com/snapshots/' }
     }
 }
 
@@ -21,17 +21,17 @@ subprojects {
         apply plugin: 'java'
 
         dependencies {
-            compileOnly libs.spigot
-            compileOnly libs.netty.buffer
-            compileOnly libs.lombok
-            annotationProcessor libs.lombok
+            compileOnly rootProject.libs.spigot
+            compileOnly rootProject.libs.netty.buffer
+            compileOnly rootProject.libs.lombok
+            annotationProcessor rootProject.libs.lombok
         }
-    }
 
-    java {
-        toolchain.languageVersion = JavaLanguageVersion.of(21)
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        java {
+            toolchain.languageVersion = JavaLanguageVersion.of(21)
+            sourceCompatibility = JavaVersion.VERSION_1_8
+            targetCompatibility = JavaVersion.VERSION_1_8
+        }
     }
 
     tasks.withType(JavaCompile).configureEach {

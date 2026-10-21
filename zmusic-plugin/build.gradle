@@ -49,17 +49,18 @@ build {
 }
 
 processResources {
-    inputs.property "version", project.version
+    def props = [version: project.version]
+    inputs.properties props
 
     filesMatching("bungee.yml") {
-        expand "version": project.version
+        expand props
     }
 
     filesMatching("plugin.yml") {
-        expand "version": project.version
+        expand props
     }
 
     filesMatching("velocity-plugin.json") {
-        expand "version": project.version
+        expand props
     }
 }
