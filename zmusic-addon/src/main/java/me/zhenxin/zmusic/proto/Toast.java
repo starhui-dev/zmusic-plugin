@@ -1,9 +1,9 @@
 package me.zhenxin.zmusic.proto;
 
 import me.zhenxin.zmusic.ZMusicAddon;
+import me.zhenxin.zmusic.api.Version;
 import me.zhenxin.zmusic.proto.packet.AdvancementPacket;
 import me.zhenxin.zmusic.proto.packet.impl.*;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -67,12 +67,7 @@ public class Toast {
                     packet = new AdvancementPacket_1_12_R1(bukkitPlayer, title);
                     break;
                 case "craftbukkit": // Mojang mappings server for paper 1.20.5+
-                    String version;
-                    if (Bukkit.getUnsafe().getDataVersion() >= 4435) {
-                        version = "1_21_7";
-                    } else {
-                        version = "1_21_4";
-                    }
+                    String version = paperImplVersion(new Version());
                     Class<?> clazz = Class.forName("me.zhenxin.zmusic.proto.packet.impl.paper.AdvancementPacket_" + version);
                     Constructor<?> constructor = clazz.getConstructor(Player.class, String.class);
                     packet = (AdvancementPacket) constructor.newInstance(bukkitPlayer, title);
@@ -87,5 +82,16 @@ public class Toast {
         } catch (Throwable ignored) {
 
         }
+    }
+
+    // 与主插件保持一致；阈值沿用原先的数据版本判断：4440 对应 1.21.8，4435 对应 1.21.6
+    static String paperImplVersion(Version version) {
+        if (!version.isLowerThan("1.21.8")) {
+            return "1_21_11";
+        }
+        if (!version.isLowerThan("1.21.6")) {
+            return "1_21_7";
+        }
+        return "1_21_4";
     }
 }

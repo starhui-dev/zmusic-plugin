@@ -2,14 +2,22 @@ package me.zhenxin.zmusic.api;
 
 import org.bukkit.Bukkit;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Version {
+
+    // 只取开头的数字段：Spigot/旧版 Paper 为 1.21.4-R0.1-SNAPSHOT，Paper 26.x 为 26.3.build.209-stable
+    private static final Pattern NUMERIC_PREFIX = Pattern.compile("\\d+(\\.\\d+)*");
 
     public String getRawVersion() {
         return Bukkit.getBukkitVersion();
     }
 
     public String getVersion() {
-        return getRawVersion().split("-")[0];
+        String raw = getRawVersion();
+        Matcher matcher = NUMERIC_PREFIX.matcher(raw);
+        return matcher.lookingAt() ? matcher.group() : raw.split("-")[0];
     }
 
     //比目标版本低

@@ -36,6 +36,30 @@ class VersionTest {
         assertFalse(version.isHigherThan("1.9.0"));
     }
 
+    @Test
+    void parsesPaperBuildVersion() {
+        Version version = version("26.3.build.209-stable");
+
+        assertEquals("26.3", version.getVersion());
+        assertTrue(version.isEquals("26.3"));
+        assertFalse(version.isLowerThan("26.3"));
+        assertTrue(version.isHigherThan("1.21.11"));
+        assertEquals("26.3", version("26.3.local-SNAPSHOT").getVersion());
+    }
+
+    @Test
+    void comparesSegmentsNumerically() {
+        Version version = version("1.21.10-R0.1-SNAPSHOT");
+
+        assertTrue(version.isHigherThan("1.21.8"));
+        assertFalse(version.isLowerThan("1.21.8"));
+    }
+
+    @Test
+    void ignoresPreReleaseSuffix() {
+        assertEquals("1.21.9", version("1.21.9-pre2-R0.1-SNAPSHOT").getVersion());
+    }
+
     private static Version version(String rawVersion) {
         return new Version() {
             @Override
