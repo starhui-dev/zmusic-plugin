@@ -1,3 +1,8 @@
+plugins {
+    // 26.x NMS 模块需要 JDK 25，本机缺少对应工具链时自动下载
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
+}
+
 rootProject.name = 'ZMusic'
 include('zmusic-plugin')
 include('zmusic-addon')
@@ -13,5 +18,7 @@ include(
         "zmusic-nms:zmusic-nms-1.20",
         "zmusic-nms:zmusic-nms-1.21.4",
         "zmusic-nms:zmusic-nms-1.21.7",
-        "zmusic-nms:zmusic-nms-1.21.11"
+        "zmusic-nms:zmusic-nms-1.21.11",
+        "zmusic-nms:zmusic-nms-26.1.2",
+        "zmusic-nms:zmusic-nms-26.3"
 )

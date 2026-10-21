@@ -84,8 +84,15 @@ public class Toast {
         }
     }
 
-    // 与主插件保持一致；阈值沿用原先的数据版本判断：4440 对应 1.21.8，4435 对应 1.21.6
+    // 与主插件保持一致：26.x 起服务端不再混淆，按 Mojang 名称编译；26.1.x ~ 26.2 字节码一致，26.3 起进度包构造器变更；
+    // 1.21.x 阈值沿用原先的数据版本判断：4440 对应 1.21.8，4435 对应 1.21.6
     static String paperImplVersion(Version version) {
+        if (!version.isLowerThan("26.3")) {
+            return "26_3";
+        }
+        if (!version.isLowerThan("26.1")) {
+            return "26_1_2";
+        }
         if (!version.isLowerThan("1.21.8")) {
             return "1_21_11";
         }

@@ -17,8 +17,10 @@ class ToastTest {
         assertEquals("1_21_11", Toast.paperImplVersion(version("1.21.8-R0.1-SNAPSHOT")));
         assertEquals("1_21_11", Toast.paperImplVersion(version("1.21.10-R0.1-SNAPSHOT")));
         assertEquals("1_21_11", Toast.paperImplVersion(version("1.21.11-R0.1-SNAPSHOT")));
-        assertEquals("1_21_11", Toast.paperImplVersion(version("26.1.2.build.74-stable")));
-        assertEquals("1_21_11", Toast.paperImplVersion(version("26.3.build.209-stable")));
+        assertEquals("26_1_2", Toast.paperImplVersion(version("26.1.1.build.29-alpha")));
+        assertEquals("26_1_2", Toast.paperImplVersion(version("26.1.2.build.74-stable")));
+        assertEquals("26_1_2", Toast.paperImplVersion(version("26.2.build.134-stable")));
+        assertEquals("26_3", Toast.paperImplVersion(version("26.3.build.209-stable")));
     }
 
     private static Version version(String rawVersion) {

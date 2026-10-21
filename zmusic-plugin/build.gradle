@@ -22,6 +22,9 @@ dependencies {
     implementation(project(path: ":zmusic-nms:zmusic-nms-1.21.4", configuration: "reobf"))
     implementation(project(path: ":zmusic-nms:zmusic-nms-1.21.7", configuration: "reobf"))
     implementation(project(path: ":zmusic-nms:zmusic-nms-1.21.11", configuration: "reobf"))
+    // 26.x 服务端不再混淆，直接打包按 Mojang 名称编译的产物
+    implementation(project(":zmusic-nms:zmusic-nms-26.1.2"))
+    implementation(project(":zmusic-nms:zmusic-nms-26.3"))
 
     compileOnly libs.bungeecord
     compileOnly libs.velocity

@@ -17,7 +17,8 @@ allprojects {
 }
 
 subprojects {
-    if (!project.name.startsWith('zmusic-nms-1.21.')) {
+    // paperweight 模块的服务端依赖和 Java 版本由开发包决定
+    if (!project.name.startsWith('zmusic-nms-1.21.') && !project.name.startsWith('zmusic-nms-26.')) {
         apply plugin: 'java'
 
         dependencies {
