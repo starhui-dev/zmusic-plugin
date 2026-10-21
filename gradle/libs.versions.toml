@@ -1,17 +1,17 @@
 [versions]
-shadow = "8.3.5"
+shadow = "9.6.1"
 
 spigot = "1.21-R0.1-SNAPSHOT"
 bungeecord = "1.21-R0.2"
 velocity = "3.1.0-SNAPSHOT"
 
-netty = "4.2.1.Final"
+netty = "4.2.19.Final"
 adventure = "4.11.0"
 
-placeholderapi = "2.11.6"
+placeholderapi = "2.12.3"
 vault = "1.7.1"
 
-lombok = "1.18.38"
+lombok = "1.18.48"
 
 [plugins]
 shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }

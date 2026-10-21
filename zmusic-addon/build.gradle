@@ -4,6 +4,11 @@ plugins {
 
 version = '2.5.0'
 
+java {
+    // 产物面向 Java 8，但要打包 Java 21 的高版本 Paper NMS 模块，因此不按 JVM 版本筛选依赖变体
+    disableAutoTargetJvm()
+}
+
 dependencies {
     implementation(project(":zmusic-nms:zmusic-nms-core"))
     implementation(project(":zmusic-nms:zmusic-nms-legacy"))
@@ -11,9 +16,10 @@ dependencies {
     implementation(project(":zmusic-nms:zmusic-nms-1.18"))
     implementation(project(":zmusic-nms:zmusic-nms-1.19"))
     implementation(project(":zmusic-nms:zmusic-nms-1.20"))
-    implementation(project(":zmusic-nms:zmusic-nms-1.21.4"))
-    implementation(project(":zmusic-nms:zmusic-nms-1.21.7"))
-    implementation(project(":zmusic-nms:zmusic-nms-1.21.11"))
+    // 显式打包 Spigot 映射的 reobf 产物，由 Paper 加载时重映射
+    implementation(project(path: ":zmusic-nms:zmusic-nms-1.21.4", configuration: "reobf"))
+    implementation(project(path: ":zmusic-nms:zmusic-nms-1.21.7", configuration: "reobf"))
+    implementation(project(path: ":zmusic-nms:zmusic-nms-1.21.11", configuration: "reobf"))
 
     compileOnly libs.placeholderapi
 }
