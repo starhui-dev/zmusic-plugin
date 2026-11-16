@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.shadow)
 }
 
-version = '2.5.0'
+version = '2.6.0'
 
 java {
     // 产物面向 Java 8，但要打包 Java 21 的高版本 Paper NMS 模块，因此不按 JVM 版本筛选依赖变体
